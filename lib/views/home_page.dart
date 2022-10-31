@@ -14,12 +14,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Stack(
         children: [
-          GoogleMap(
-            initialCameraPosition: CameraPosition(
-              target: LatLng(38.9637, 35.2433),
-              zoom: 5,
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: GoogleMap(
+              initialCameraPosition: CameraPosition(
+                target: LatLng(41.1082, 28.9784),
+                zoom: 10,
+              ),
             ),
           ),
         ],
