@@ -20,9 +20,10 @@ class _MapPageState extends State<MapPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: GoogleMap(
+              mapType: MapType.satellite,
               initialCameraPosition: CameraPosition(
                 target: LatLng(41.1082, 28.9784),
-                zoom: 10,
+                zoom: 3,
               ),
             ),
           ),
