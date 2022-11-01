@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flighttracker">
    <application
-        android:label="flighttracker"
+        android:label="FlightTracker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

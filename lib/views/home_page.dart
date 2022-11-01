@@ -54,8 +54,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          LottieBuilder.network(
-              "https://assets1.lottiefiles.com/packages/lf20_mksle47o.json"),
+          Image(
+            image: AssetImage("assets/world.gif"),
+          )
         ],
       ),
     );

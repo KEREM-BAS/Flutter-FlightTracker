@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
+import 'dart:async';
+
+import 'package:flighttracker/configs/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -19,6 +22,7 @@ class _MapPageState extends State<MapPage> {
     _mapController = controller;
   }
 
+  bool isLoading = true;
   @override
   Widget build(BuildContext context) {
     setState(() {
@@ -27,24 +31,36 @@ class _MapPageState extends State<MapPage> {
             LatLngBounds(southwest: _sw, northeast: _ne), 5),
       );
     });
-
+    Timer(
+      Duration(milliseconds: 3700),
+      () {
+        setState(() {
+          isLoading = false;
+        });
+      },
+    );
     return Scaffold(
-      body: Stack(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: GoogleMap(
-              onMapCreated: _OnMapCreated,
-              mapType: MapType.satellite,
-              initialCameraPosition: CameraPosition(
-                target: LatLng(_sw.latitude, _ne.longitude),
-                zoom: 3,
+      backgroundColor: mainColor,
+      body: isLoading
+          ? Center(
+              child: Image(
+                width: MediaQuery.of(context).size.width / 1.5,
+                image: AssetImage("assets/loadingAnimation.gif"),
+              ),
+            )
+          : SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: GoogleMap(
+                onMapCreated: _OnMapCreated,
+                mapType: MapType.satellite,
+                compassEnabled: true,
+                myLocationButtonEnabled: true,
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(_sw.latitude, _ne.longitude),
+                ),
               ),
             ),
-          ),
-        ],
-      ),
     );
   }
 }
