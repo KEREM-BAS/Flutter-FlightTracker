@@ -16,7 +16,7 @@ class MapPage extends StatefulWidget {
 GoogleMapController? _mapController;
 
 class _MapPageState extends State<MapPage> {
-  LatLng _sw = LatLng(49.674, -14.011517);
+  LatLng _sw = LatLng(49.674, -14.01517);
   LatLng _ne = LatLng(61.061, 2.0919127);
   void _OnMapCreated(GoogleMapController controller) async {
     _mapController = controller;
